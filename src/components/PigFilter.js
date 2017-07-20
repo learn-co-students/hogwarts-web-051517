@@ -10,7 +10,6 @@ const PigFilter = ({handleFilterChange, isGreased}) => {
       <br/>
     </div>
   )
-
 }
 
 export default PigFilter;

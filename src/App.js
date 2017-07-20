@@ -19,10 +19,6 @@ class App extends Component {
     }
   };
 
-  showPig = (pig) => {
-    // return <PigModal />
-  }
-
    sortPigs = (pigs, currentSort, isGreased) => {
      let filteredPigs = pigs
 

@@ -1,9 +1,9 @@
 import React from 'react';
 import PigModal from './PigModal'
 
-const PigTile = ({name, imagePath, weight, greased, pig, showPig}) =>
+const PigTile = ({name, imagePath, weight, greased, pig}) =>
 
-  <div className='ui eight wide column' onClick={showPig(pig)}>
+  <div className='ui eight wide column'>
     <img src={imagePath}/>
     <h1>Name: {name}</h1>
     <p>Weight: {weight}</p>
