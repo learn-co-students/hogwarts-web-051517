@@ -1,36 +1,25 @@
 import React from 'react'
 import PigTile from './PigTile'
 
-function sortPigs(pigs, currentSort) {
-  if (currentSort === 'all') {
-    return pigs
-  } else if (currentSort === 'name') {
-    return pigs.sort(function(a,b) {
-      let nameA = a.name
-      let nameB = b.name
-      if (nameA < nameB) {
-        return -1
-      }
-      if (nameB < namea) {
-        return 1
-      }
-      return 0
-    })
-  } else if (currentSort === 'weight') {
+const PigList = ({pigs, currentSort, sortPigs, isGreased, findImage, pigImgs, showPig}) => {
+  const list = sortPigs(pigs, currentSort, isGreased)
 
-  }
-}
-
-const PigList = ({pigs, currentSort}) => {
-  return (
-  {const list = sortPigs()}
-  <div className='ui grid container'>
-    {list.map(pig => {
-      return <PigTile name={pig.name} imagePath="/hog-imgs/cherub.png"/>
-    })}
-  </div>
+  let key = "weight as a ratio of hog to LG - 24.7 Cu. Ft. French Door Refrigerator with Thru-the-Door Ice and Water"
+  return(
+    <div className='ui grid container'>
+      {list.map((pig, index) => {
+        return <PigTile
+          key={pig.name}
+          greased={pig.greased}
+          weight={pig[key]}
+          name={pig.name}
+          imagePath={`hog-imgs/${pig.name.toLowerCase().replace(/ /g, "_")}.jpg`}
+          pig={pig}
+          showPig={showPig}
+        />
+      })}
+    </div>
   )
-
 }
 
 
