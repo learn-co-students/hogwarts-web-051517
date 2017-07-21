@@ -14,36 +14,26 @@ export default class HogList extends Component {
     handleClick = (event) => {
         this.setState({
             clickedHog: event.currentTarget.className 
-    })
+        })
     }
 
-    filterPigs = () => {
-        return this.state.hogs.filter(hog => hog.greased === true)
-    }
-    
-    showResult = () => {
+    showGreased = () => {
          // debugger
         if (this.props.isGreased === false) {
             return this.state.hogs
         } else if (this.props.isGreased === true) {
             // debugger
-            return this.filterPigs() 
+            return this.state.hogs.filter(hog => hog.greased === true)
         }
     }
 
-    
-
     showSort = (results) => {  
-        let nameSortArray= results.slice()
-        let weightSortArray = results.slice()
+        let nameSortArray = results.slice() //do the copy of result array
+        let weightSortArray = results.slice() //do the copy of result array
+        // sort can't sort two times on the same array u need to make a copy of original array and do sort on copies
         let namesAZ = nameSortArray.sort(function (a,b) {
-            // debugger
-            if (a.name < b.name) {
-                return -1
-            }
-            if (a.name > b.name) {
-                return 1
-            }
+            if (a.name < b.name) { return -1 }
+            if (a.name > b.name) { return 1 }
             return 0
         })
 
@@ -52,12 +42,10 @@ export default class HogList extends Component {
         let weightSort = weightSortArray.sort(function(a, b) {
             return a[weight] - b[weight]
         })
-        // if (this.props.sortby === 'default') {
-        //     return this.state.hogs.map(hog => <Hog hoginfo={hog} onHandle={this.handleChange} /> )
+
         if (this.props.sortby === 'sortName') {
             return namesAZ.map(hog => <Hog hoginfo={hog} onChange={this.handleChange} /> )
-        } 
-        else if (this.props.sortby === 'sortWeight') {
+        } else if (this.props.sortby === 'sortWeight') {
             return weightSort.map(hog => <Hog hoginfo={hog} onChange={this.handleChange} /> )
         } else {
             return this.state.hogs.map(hog => <Hog hoginfo={hog} />)
@@ -65,7 +53,7 @@ export default class HogList extends Component {
     }
 
     allFilters = () => {
-        let results = this.showResult()
+        let results = this.showGreased()
         return this.showSort(results)
     }
 
