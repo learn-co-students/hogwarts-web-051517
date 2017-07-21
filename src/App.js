@@ -22,10 +22,11 @@ class App extends Component {
     }
 
     handleChange = (event) => {
-        
+        // console.log(this.state.sortby)
         this.setState({
             sortby: event.target.value
         })
+          // debugger
     }
 
   render() {

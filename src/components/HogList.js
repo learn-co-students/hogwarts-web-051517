@@ -20,14 +20,9 @@ export default class HogList extends Component {
     filterPigs = () => {
         return this.state.hogs.filter(hog => hog.greased === true)
     }
-
-    allFilter = () => {
-        let results = this.showResult()
-        return this.showSortNames(results)
-    }
-
+    
     showResult = () => {
-        // debugger
+         // debugger
         if (this.props.isGreased === false) {
             return this.state.hogs
         } else if (this.props.isGreased === true) {
@@ -36,9 +31,13 @@ export default class HogList extends Component {
         }
     }
 
-    showSortNames = (results) => {  
-        
-        const namesAZ = results.sort(function(a,b) {
+    
+
+    showSort = (results) => {  
+        let nameSortArray= results.slice()
+        let weightSortArray = results.slice()
+        let namesAZ = nameSortArray.sort(function (a,b) {
+            // debugger
             if (a.name < b.name) {
                 return -1
             }
@@ -47,26 +46,34 @@ export default class HogList extends Component {
             }
             return 0
         })
-        let weigth = "weight as a ratio of hog to LG - 24.7 Cu. Ft. French Door Refrigerator with Thru-the-Door Ice and Water"
-        const weightSort = results.sort(function(a, b) {
-            return a[weigth] - b[weigth]
-        })
 
+        let weight = "weight as a ratio of hog to LG - 24.7 Cu. Ft. French Door Refrigerator with Thru-the-Door Ice and Water"
+
+        let weightSort = weightSortArray.sort(function(a, b) {
+            return a[weight] - b[weight]
+        })
         // if (this.props.sortby === 'default') {
         //     return this.state.hogs.map(hog => <Hog hoginfo={hog} onHandle={this.handleChange} /> )
-         if (this.props.sortby === 'sortName') {
-            return namesAZ.map(hog => <Hog hoginfo={hog} onHandle={this.handleChange} /> )
+        if (this.props.sortby === 'sortName') {
+            return namesAZ.map(hog => <Hog hoginfo={hog} onChange={this.handleChange} /> )
         } 
-        // else if (this.props.sortby === 'sortWeight') {
-        //     return weightSort.map(hog => <Hog hoginfo={hog} onHandle={this.handleChange} /> )
-        // }
+        else if (this.props.sortby === 'sortWeight') {
+            return weightSort.map(hog => <Hog hoginfo={hog} onChange={this.handleChange} /> )
+        } else {
+            return this.state.hogs.map(hog => <Hog hoginfo={hog} />)
+        }
+    }
+
+    allFilters = () => {
+        let results = this.showResult()
+        return this.showSort(results)
     }
 
     render() {
         // debugger
         return (
             <div className="hog-list">
-                {this.allFilter()}
+                {this.allFilters()}
             </div>
             )
     }

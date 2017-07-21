@@ -8,7 +8,6 @@ export default class Checkboxes extends Component {
     }
 
     render() {
-        console.log(this.props)
         return (
             <div> 
                 <input type="checkbox" name="greased" onChange={this.props.onChange}/> Greased
