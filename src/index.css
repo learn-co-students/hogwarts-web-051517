@@ -2,4 +2,39 @@ body {
   margin: 0;
   padding: 0;
   font-family: sans-serif;
+  background: #f0d1cd;
+}
+
+image { border: 0px; }
+
+.filter {
+  height: 65px;
+}
+
+.hogList {
+  margin: 0% 5% 0% 5%;
+  background: rgba(255, 227, 227, 0.59);
+  padding: 28px;
+  margin-bottom: 40px;
+  border-radius: 6px;
+}
+
+.hogCard {
+  height: 284px;
+  width: 270px;
+  position: relative;
+  right: 10px;
+  top: 10px;
+}
+
+.cardContainer {
+  margin: 20px;
+}
+
+.piggyImage {
+  border-radius: 8px;
+}
+
+.insideCard {
+  margin-top: 50px!important;
 }

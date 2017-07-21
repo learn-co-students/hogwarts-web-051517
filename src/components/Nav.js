@@ -1,14 +1,21 @@
-import piggy from '../porco.png';
+import tony from '../porco.png';
 import React from 'react';
+
+const clickedTony = () => {
+  fetch('http://api.icndb.com/jokes/random')
+  .then(res => res.json())
+  .then(results => alert(results.value.joke))
+}
 
 const Nav = () => {
   return (
     <div className="navWrapper">
-      <span className="headerText">Hogwarts</span>
+      <span className="headerText">Hogs, Hogs, Mo' Hogs</span>
       <div className="TwirlyPig">
-        <img src={piggy} className="App-logo" alt="piggy" />
+        <img src={tony} className="App-logo" alt="tony" onClick={clickedTony} />
       </div>
-      <span className="normalText">A React App for County Fair Hog Fans</span>
+
+      <span className="normalText">Yep...</span>
     </div>
   )
 }
