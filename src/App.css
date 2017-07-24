@@ -1,11 +1,14 @@
 .App {
-  margin: 0% 5% 0% 5%;
   text-align: center;
 }
 
 .TwirlyPig {
   transition: all 3s ease-in-out;
   display: inline;
+  position: relative;
+  top: 14px;
+  left: 125px;
+  cursor: pointer;
 }
 
 .TwirlyPig:hover {
@@ -13,7 +16,10 @@
 }
 
 .navWrapper {
+  height: 107px;
   margin-bottom: 2%;
+  background-image: url('clouds_2.png');
+  background-size: 380px;
 }
 
 .filterWrapper {
@@ -21,8 +27,9 @@
 }
 
 .headerText {
-  color: #F5A9BC;
-  font-size: 3em;
+  color: #080a9b;
+  font-family: 'Special Elite', cursive;
+  font-size: 4em;
   margin: 0% 2% 0% 2%;
 }
 
@@ -64,7 +71,7 @@ ul {
 
 .subtleText {
   color: #D1D1D1;
-  font-size: .75em; 
+  font-size: .75em;
 }
 
 
